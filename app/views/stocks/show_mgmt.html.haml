@@ -1,0 +1,51 @@
+= stylesheet_link_tag "blue_tablesorter.css"
+= javascript_include_tag "jquery.tablesorter.min.js"
+= javascript_include_tag "show_mgmt.js"
+= stylesheet_link_tag "show_mgmt.css"
+
+%h2 Corporate management
+
+
+#specify_dividend_dialog.invisible{:title => "Dividend payment amount per share"}
+  %p
+    Specify the number of ISKs to disburse per share when paying dividends
+  %br
+  %p{:style => "margin-left: 20px;"}
+    %label
+      Dividend per share:
+    = text_field_tag "dividend"
+  %br
+  %button.ui-button.ui-state-default.ui-corner-all.operation#set_dividend
+    Set dividend
+  %img#set_dividend_wait.invisible{:style => "width: 50%; height: 50%", :src => "images/wait2.gif" }
+
+#select_customer_to_refund_dialog.invisible{:title => "Select customer bonds to refund"}
+  - form_tag "/stocks/process_bond_refund" do 
+    %table#customers_to_refund.tablesorter
+      %thead
+        %tr
+          %th Customer name
+          %th Bond market value
+          %th Matures on
+          %th Refund?
+      %tbody
+    %input.ui-button.ui-state-default.ui-corner-all.operation{:type => "submit", :value => "Process refunds"}
+
+
+= render :partial => "article_drafting_dialog"
+= render :partial => "create_stock_form"
+= render :partial => "create_bond_form"
+
+
+#accordion
+  %h3
+    %a{:href=>"#"} 
+      List a product
+  = render :partial => "list_product"
+
+  - @current_user.managed_corporations.each do |corp|
+    %h3
+      %a{:href=>"#"}
+        = corp.name
+        = "(#{corp.symbol.upcase})"
+    = render :partial => "manage_product", :locals => { :stock => corp }

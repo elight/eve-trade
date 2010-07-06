@@ -1,0 +1,2 @@
+class InterestPayment < DividendPayment
+end

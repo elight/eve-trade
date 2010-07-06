@@ -1,0 +1,57 @@
+= javascript_include_tag "jquery.tablesorter.min.js"
+= javascript_include_tag "portfolio.js"
+= javascript_include_tag "easynews/jquery.easynews.js"
+= stylesheet_link_tag "blue_tablesorter.css"
+
+#withdraw_funds_div.invisible{:title => "Withdraw funds"}
+  = render :partial => "withdraw_funds"
+
+
+%h1
+  #{current_user.eve_character_name}'s portfolio
+
+= render :partial => "news"
+
+#account
+  %p
+    .form_content
+      %h3
+        %label
+          Balance:
+        %span.form_data
+          = number_with_delimiter current_user.balance, :delimiter => ","
+          ISK
+          %button#withdraw_funds.ui-button.ui-state-default.ui-corner-all.operation
+            withdraw
+
+#tabs
+  %ul
+    %li
+      %a{:href=>"#stocks_owned"} 
+        My Stocks
+    %li
+      %a{:href=>"#bonds_owned"} 
+        My Bonds
+    %li
+      %a{:href=>"#market"}
+        Stock Market 
+    %li
+      %a{:href=>"#bond_market"}
+        Bond Market 
+    %li
+      %a{:href=>"#buy_orders"} 
+        My open buy orders
+    %li
+      %a{:href=>"#sell_orders"} 
+        My open sell orders
+    %li
+      %a{:href=>"#transactions"}
+        My transaction History
+  = render :partial => "stocks_owned"
+  = render :partial => "bonds_owned"
+  = render :partial => "market"
+  = render :partial => "bond_market"
+  = render :partial => "buy_orders"
+  = render :partial => "sell_orders"
+  = render :partial => "transactions"
+    

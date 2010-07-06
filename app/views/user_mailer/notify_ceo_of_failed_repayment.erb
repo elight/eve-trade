@@ -1,0 +1,8 @@
+<%= @bond_holder %> purchased <%= @num_shares %> of <%= @bond_symbol %> from you on <%= @shares_bought_at %>.
+
+These bonds matured on and were due for repayment on <%= @bonds_matured_at %> .  However, your balance of <%= number_with_delimiter @balance, :delimiter => "," %> ISK was inadequate to repay their value of <%= number_with_delimiter @bond_value, :delimiter => "," %> ISK.
+
+<%= @bond_holder %> has also been notified of this failed repayment.
+
+Sincerely,
+The EVE Trade board

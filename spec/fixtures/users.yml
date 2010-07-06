@@ -1,0 +1,42 @@
+roquezir:
+  id: 1
+  login: roquezir
+  email: salty_dog@example.com
+  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+  created_at: <%= 5.days.ago.to_s :db %>
+  activation_code: foobar
+  activated_at: <%= 1.days.ago.to_s :db %>
+  state: active
+  eve_character_name: Roquezir
+  eve_character_id: 42
+  balance: 10_000_000
+
+bond_issuer:
+  id: 2
+  login: bond_issuer
+  email: salty_dog2@example.com
+  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+  created_at: <%= 5.days.ago.to_s :db %>
+  activation_code: foobar
+  activated_at: <%= 1.days.ago.to_s :db %>
+  state: active
+  eve_character_name: bond_issuer
+  eve_character_id: 43
+  balance: 5_000_000
+
+bond_holder:
+  id: 3
+  login: bond_holder
+  email: salty_dog3@example.com
+  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+  created_at: <%= 5.days.ago.to_s :db %>
+  activation_code: foobar
+  activated_at: <%= 1.days.ago.to_s :db %>
+  state: active
+  eve_character_name: bond_holder
+  eve_character_id: 44
+  balance: 10_000_000
+

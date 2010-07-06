@@ -1,0 +1,59 @@
+#commands {
+  text-align: center;
+  width: 45%;
+  margin: 10px 0px 10px 0px;
+}
+
+.header {
+  font: 1.2em Arial, Sans-Serif;
+  font-weight: bold;
+}
+
+#stats {
+  width: 45%;
+}
+
+#buy_dialog p {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+#sell_dialog p {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+#stock_news {
+  overflow: auto;
+  float: right;
+  height: 280px;
+  width: 50%;
+  margin: -10px 0px 0px 10px;
+}
+
+.featured_articles {
+  font: 1.2em Arial, Sans-Serif;
+  font-weight: bold;
+}
+
+.other_articles {
+}
+
+#bond_valuation {
+  margin-top: 10px;
+  padding: 5px 10px;
+}
+
+#bond_valuation_table {
+  border: 1px solid black;
+  text-align: center;
+}
+
+#bond_valuation_table th {
+  padding: 0px 10px;
+}
+
+#bond_valuation_table td {
+  text-align: center;
+}
+

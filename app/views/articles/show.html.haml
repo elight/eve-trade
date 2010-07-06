@@ -1,0 +1,13 @@
+= stylesheet_link_tag "news.css"
+
+#individual_article
+  %h1
+    = @article.headline
+  #author
+    = "#{@article.user.eve_character_name},"
+    %span#product
+      = link_to "#{@article.stock.name} (#{@article.stock.symbol})", :controller => "stocks", :action => "show", :id => @article.stock
+  #date
+    = @article.updated_at
+  #body
+    = BlueCloth.new(@article.body).to_html

@@ -1,0 +1,21 @@
+#news
+  %h3
+    %label
+      Featured news
+  #mynewsdis{:align=>"left"}
+    .news_border
+      #show_here.news_show
+    #news_button.buttondiv
+      %img#news_prev{:src => "/images/prev.gif" :align => "absmiddle"}
+      %img#news_pause{:src => "/images/pause.gif" :align => "absmiddle"}
+      %img#news_next{:src => "/images/next.gif" :align => "absmiddle"}
+    .news_mark
+      #news_display.news_title
+
+  #mynews
+    - Article.featured.each_with_index do |article, i|
+      %div.news_style{:id => "news#{i}", :rel => article.headline}
+        %h3
+          = link_to article.headline, :controller => "articles", :action => "show", :id => article.id
+        %p
+          = article.body_with_ellipsis_at 200

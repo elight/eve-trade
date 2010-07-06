@@ -1,0 +1,21 @@
+#stock_news 
+  %h1
+    Featured News
+  %ul.featured_articles
+    - if @featured_articles.empty?
+      %h4
+        None
+    - @featured_articles.each do |article|
+      %li
+        = article.updated_at
+        = link_to article.headline, :controller => "articles", :action => "show", :id => article.id
+  %h2
+    Other News
+  %ul.other_articles
+    - if @other_articles.empty?
+      %h4
+        None
+    - @other_articles.each do |article|
+      %li
+        = article.updated_at
+        = link_to article.headline, :controller => "articles", :action => "show", :id => article.id

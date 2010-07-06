@@ -1,0 +1,34 @@
+#market
+  - if InternalStock.count == 0
+    %h3
+      None
+  - else
+    %table.vader_table.tablesorter
+      %thead
+        %tr
+          %th.stock_column Stock
+          %th # 4 Sale
+          %th Max Buy 
+          %th Min Sell
+          %th Dividend
+          %th Last Trade
+          %th Last Traded 
+      %tbody
+        - InternalStock.all.each do |stock|
+          %tr
+            %td.stock_column
+              = link_to stock.symbol, :controller => :stocks, :action => :show, :id => stock.id
+            %td
+              - num_for_sale = stock.number_shares_for_sale 
+              = num_for_sale == 0 ? "None" : num_for_sale
+            %td
+              = number_with_delimiter  stock.current_bid, :delimiter => ","
+            %td
+              = number_with_delimiter  stock.current_ask, :delimiter => ","
+            %td 
+              = stock.current_dividend ? stock.current_dividend.amount : nil
+            - lt = stock.last_trade
+            %td
+              = lt ? number_with_delimiter(lt.price_per_share, :delimiter => ",") : 0
+            %td
+              = lt ? lt.created_at : nil

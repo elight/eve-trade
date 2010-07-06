@@ -1,0 +1,2 @@
+class FailedBondPayment < FailedPayment
+end

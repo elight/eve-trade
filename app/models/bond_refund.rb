@@ -1,0 +1,3 @@
+class BondRefund < DividendPayment
+end
+

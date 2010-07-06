@@ -1,0 +1,5 @@
+- if current_user
+  .top_container
+    .pics
+      - Advertisement.all.each do |ad|
+        = link_to image_tag(ad.image_url, :alt => ad.alt_text, :style => "text-align: center;"), ad.link_url, :style => "width: 100%;"

@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>Jquery</title>	
+<script type="text/javascript" src="jquery-1.2.3.pack.js"></script>
+<script type="text/javascript" src="jquery.easynews.js"></script>
+
+<style>
+html
+{	background-color: #FFA928;
+font: normal 76% "Arial", "Lucida Grande",Verdana,  Sans-Serif;
+	color:black;
+	}
+a { text-decoration: none; font-weight: bold; }
+
+.news_style{
+display:none;
+}
+.news_show
+{
+background-color: white;
+color:black;
+width:350px;
+height:150px;
+font: normal 100% "Arial", "Lucida Grande",Verdana,  Sans-Serif;
+overflow: auto;	
+
+}
+.news_border
+{
+background-color: white;
+width:350px;
+height:150px;
+font: normal 100% "Arial", "Lucida Grande",Verdana,  Sans-Serif;
+border: 1px solid gray;
+padding: 5px 5px 5px 5px;
+overflow: auto;	
+
+}
+.news_mark{
+background-color:white ;
+font: normal 70% "Arial", "Lucida Grande",Verdana,  Sans-Serif;
+border: 0px solid gray;
+width:361px;
+height:35px;
+color:black;
+text-align:center;
+}
+.news_title{
+font: bold 120% "Arial", "Lucida Grande",Verdana,  Sans-Serif;
+border: 0px solid gray;
+padding: 5px 0px 9px 5px;
+color:black;
+}
+.news_show img{
+
+margin-left: 5px;
+margin-right: 5px;
+
+}
+.buttondiv
+{
+position: absolute;
+/*float: left;*/
+/*top: 169px;*/
+padding: 5px 5px 5px 5px;
+background-color:white ;
+border: 1px solid gray;
+/*border-top-color: white;*/
+border-top:none;
+height:20px;
+}
+
+</style>
+<script>
+$(document).ready(function(){
+var newsoption1 = {
+  firstname: "mynews",
+  secondname: "showhere",
+  thirdname:"news_display",
+  fourthname:"news_button",
+   newsspeed:'6000'
+}
+$.init_news(newsoption1);
+
+
+var myoffset=$('#news_button').offset();
+
+var mytop=myoffset.top-1;
+
+$('#news_button').css({top:mytop});
+
+});
+</script>
+</head>
+<body>
+
+<!--This is the left side 1st news html style-->
+
+<b><font color=white size=2>Effect 0 (FadeOut And In)</font></b>
+<div align=left id=mynewsdis><div class=news_border>
+<div id=showhere class=news_show ></div>
+</div>
+<div class=buttondiv id=news_button>
+<img src=prev.gif align="absmiddle" id=news_prev><img src=pause.gif align="absmiddle" id=news_pause><img src=next.gif align="absmiddle" id=news_next >
+</div>
+<div class=news_mark><div id=news_display class=news_title></div>
+</div></div>
+
+<br>
+<br>
+
+<h1>Plugins</h1>
+<a href=http://jquery.000webhost.info>Home</a>
+<ul>
+	<li>Easy News 1.0.1</li>	
+</ul>
+&nbsp;<div id=pp1 ><a name="easyslide"></a>E<b>asy News 1.0.1</b><div id=pp2 >Here is a jQuery plugins that 
+	lets you create JavaScript News Slide as fly.<p>Easy News 1.0.1&nbsp; has function as following</p>
+	<ul>
+		<li>Cross browser( Tested with IE7 and Firefox 2.0)</li>
+		<li>Both <b>PREV</b> and <b>NEXT</b> auto play </li>
+		<li>Pause while mouseover</li>
+		<li>No extra setup</li>
+		<li>No other plugins needed</li>
+		<li>Any Html content accept (Even Flash)</li>
+		<li>Display effect support fadeIn and Out,Left to Right ,SlideUp and 
+		Down&nbsp; (Tested with IE7 and Firefox 2.0)</li>
+		<li>Display speed adjustment&nbsp; </li>
+		<li>You can edit css change any 
+		layout color you like</li>
+	</ul>
+	
+	<p>&nbsp;</p>
+	
+	<div  style="width:450px;background:black;color:white;font:90%;padding:10px 30px 10px 30px;" id=showhow>
+						Starting with <abbr>HTML</abbr> the plugin as following 
+						:<p>&nbsp;</p>
+						<p>example:</p>
+						<p><b><font size="3" color="#99FF66">STEP 1: setup where 
+						is your news&nbsp; </font></b><br>
+						// Your news container</p>
+						<p><b><font color="#FFFF99">&lt;div 
+						</font><font color="#66CCFF">id</font><font color="#FFFF99">=</font><font color="#99FF66">orgnews </font><font color="#FFFF99">
+						&nbsp;</font><font color="#66CCFF">style</font><font color="#FFFF99">=</font><font color="#99FF66">&quot;display:none&quot;</font><font color="#FFFF99">&gt;
+						</font> <br>
+						&lt;div class=news_style&gt;.......&lt;/div&gt;<br>
+						&lt;div class=news_style&gt;.......&lt;/div&gt;<br>
+						.................................</b><font color="#FFFF99"><b><br>
+						&lt;/div&gt;</b></font></p>
+						<p><b><font size="3" color="#99FF66">STEP 2: setup where 
+						to display&nbsp; </font></b></p>
+						<p><b>//Where your news display</b></p>
+						<p><b><font color="#FFFF99">&lt;div</font>
+						<font color="#66CCFF">id</font><font color="#FFFF99">=</font><font color="#99FF66">showhere</font><font color="#FFFF99">&gt;&lt;/div&gt;// 
+						for news content display</font></b></p>
+						<p><b><font size="3" color="#99FF66">STEP 3: insert 
+						button images&nbsp; </font></b></p>
+						<p><b>//Where image button</b></p>
+						<p><b><font color="#FFFF99"><br>
+						&lt;div&nbsp; </font><font color="#66CCFF">id</font><font color="#FFFF99">=</font><font color="#99FF66">news_button</font><font color="#FFFF99">&gt;</font>// 
+						for Prev . Pause. Next . image button<br>
+						&lt;img src=prev.gif align=&quot;absmiddle&quot; &gt;&lt;img src=pause.gif 
+						align=&quot;absmiddle&quot; &gt;&lt;img src=next.gif align=&quot;absmiddle&quot; &gt;<font color="#FFFF99"><br>
+						&lt;/div&gt;</font></b></p>
+						<p><b><font size="3" color="#99FF66">STEP4: setup where
+						</font></b><font size="3" color="#99FF66"><b>to display 
+						news title</b></font></p>
+						<p><b>// Where news title display</b></p>
+						<p><font color="#FFFF99"><b>&lt;div</font><font color="#66CCFF"> 
+						id</font><font color="#FFFF99">=</font><font color="#99FF66">news_display</font><font color="#FFFF99"> 
+						&gt;&lt;/div&gt;</font></b></p>
+						<p>&nbsp;</p>
+						<p><font color="#FF9900"><b>****Easy News 1.0.1 Change 
+						Initializers (init methods) and add 3 variable names (playingtitle,nexttitle,prevtitle)*******</b></font></p>
+						<p><font color="#FFFF99"><b>&lt;script&gt;</b></font><b><font color="#FFFF99"><br>
+						$(document).ready(function(){</font></b></p>
+						<p><b><font color="#FFFF99">var newsoption1 = {<br>
+						</font><font color="#FF9900">firstname:</font><font color="#FFFF99">
+						</font><font color="#00FF00">&quot;mynews&quot;,</font><font color="#FFFF99"><br>
+						</font><font color="#FF9900">secondname:</font><font color="#FFFF99">
+						</font><font color="#00FF00">&quot;showhere&quot;,</font><font color="#FFFF99"><br>
+						</font><font color="#FF9900">thirdname:</font><font color="#00FF00">&quot;news_display&quot;,</font><font color="#FFFF99"><br>
+						</font><font color="#FF9900">fourthname:</font><font color="#00FF00">&quot;news_button&quot;,</font><font color="#FFFF99"><br>
+						</font><font color="#FF9900">playingtitle:</font><font color="#00FF00">&quot;Now</font><font color="#00FF00"> 
+						Playing:&quot;,</font><font color="#FFFF99"><br>
+						</font><font color="#FF9900">nexttitle:</font><font color="#00FF00">&quot;Next</font><font color="#00FF00"> 
+						News:&quot;,</font><font color="#FFFF99"><br>
+						</font><font color="#FF9900">prevtitle:</font><font color="#00FF00">&quot;Prev</font><font color="#00FF00"> 
+						News:&quot;,</font><font color="#FFFF99"><br>
+						</font><font color="#FF9900">newsspeed:</font><font color="#00FF00">&#39;8000&#39;,</font><font color="#FFFF99"><br>
+						</font><font color="#FF9900">effectis:</font><font color="#00FF00">&#39;1&#39;</font><font color="#FFFF99"><br>
+						}<br>
+						$.init_news(newsoption1);<br>
+						</font></b><font color="#FFFF99"><b><br>
+						});<br>
+						&lt;/sript&gt;</b></font></p>
+						<ul>
+							<li><b><font color="#99FF66">firstname</font></b> 
+							has to be the id of the div containing the news</li>
+							<li><b><font color="#99FF66">secondname</font><font color="#66CCFF"> </font></b>
+							is the id of container where you like news to 
+							display</li>
+							<li><b><font color="#99FF66">thirdname</font></b><font color="#99FF66"><b>:</b></font> <b><font color="#66CCFF"> &nbsp;</font></b>is the id of container where you like 
+							news title to 
+							display</li>
+							<li><b><font color="#99FF66">fourthname</font></b><font color="#99FF66"><b> :</b></font> <b><font color="#66CCFF"> &nbsp;</font></b>is 
+							the id of container where images file 
+							inside(prev.pause.next) </li>
+							<li><font color="#00FF00"><b>playingtitle:</b></font> 
+							set any thing you like (default is
+							<font color="#FFFF00"><b>Now Playing:</b></font>)</li>
+							<li><font color="#00FF00"><b>nexttitle:</b></font>set 
+							any thing you like (default is <font color="#FFFF00">
+							<b>Next News:</b></font>)</li>
+							<li><font color="#00FF00"><b>prevtitle:</b></font>set 
+							any thing you like (default is <font color="#FFFF00">
+							<b>Prev News:</b></font>)</li>
+							<li><b><font color="#99FF66">newsspeed</font></b><font color="#99FF66"><b> :</b></font> auto play pause time (1000=1sec default is 
+							6sec)</li>
+							<li><b><font color="#99FF66">effectis</font></b><font color="#99FF66"><b> :</b></font> 
+							<font color="#FFFF99"><b>0 :</b></font>fadeIn and 
+							Out <font color="#FFFF99"><b>1:</b></font>slideUp 
+							and Down <font color="#FFFF99"><b>2:</b></font>Left 
+							to Right(default is 0)</li>
+						</ul>
+						<p>Q.is there any css need? </p>
+						<p>A.what your news slide look like, it depend on your 
+						css ,if you are lazy to change it.you can copy css from 
+						demo page.</p>
+						<p>Q.can add hyperlink to my news?</p>
+						<p>A.any thing you can play with HTML&nbsp; also can 
+						play with here.</p>
+						<p>Q.can I change the images look(prev.pause.next)?</p>
+						<p>A.Yes ! but please keep their name as (prev.gif 
+						prev0.gif pause.gif pause0.gif next.gif next0.gif)and 
+						keep their id as (news_prev , news_pause, news_next)</p>
+						<p>
+						<img border="0" src="prev.gif" width="20" height="19"><img border="0" src="prev0.gif" width="20" height="19"><img border="0" src="pause.gif" width="20" height="19"><img border="0" src="pause0.gif" width="20" height="19"><img border="0" src="next.gif" width="20" height="19"><img border="0" src="next0.gif" width="20" height="19"></p>
+						<p>Q.how can I setup my news title?</p>
+						<p>A.for example:if you put your news as 
+						following.please set rel=xxxxxx as your news title.</p>
+						<p><b>&lt;div id=mynews_hide_here &gt;<br>
+						&lt;div<font color="#FFFF99"> </font><font color="#00FF00">
+						rel</font>=<font color="#00FF00">mynews_title1 class</font>=<font color="#00FF00">news_style</font>&gt;................&lt;/div&gt;<br>
+						&lt;div <font color="#00FF00">rel</font>=<font color="#00FF00">mynews_title2 
+						class</font>=<font color="#00FF00">news_style</font>&gt;...............&lt;/div&gt;<br>
+						&lt;/div&gt;</b></p>
+						<p>***** IMPORTANT CLASS NAME REQUIRED********</p>
+						<p>How <font color="#99FF66"><b>Easy News</b></font> 
+						know how many news needed to display and what is prev or 
+						next news? <font color="#99FF66"><b>Easy News</b></font>&nbsp; 
+						search any continer has class named
+						<font color="#00FF00"><b>news_style</b> </font>then 
+						display it .see prev example .</p>
+						<p>Back to <a href=http://jquery.000webhost.info>Mian Page</a> click download to download&nbsp; it.</p>
+						
+						<p>&nbsp;</p>
+						<p>&nbsp;</div>
+</div>
+<!--This is the left side 1st news hide container-->
+
+<div id=mynews>
+<div id=news1 class=news_style rel="Lou's newest book" >
+<table><tr><td><img src=news1.jpg align=left width=38 height=60>
+Lou's newest book -- Independents Day: Awakening the American Spirit -- hit shelves on November 6!<font color="#99FF66"><b>INDEPENDENTS DAY! </b></font></td></tr><tr><td>
+<img src=news1-1.jpg align=left width=80 height=60><font color="#FF9900"><b>The weak dollar</b></font> is threatening the survival of European planemaker Airbus, chief executive Tom Enders told workers in Hamburg on Thursday.</td></tr></table>
+</div>
+<div id=news2 class=news_style rel="Lou Dobbs Tonight">				
+<table><tr><td><img src=news2.jpg align=left width=65 height=49><font color="#99CCFF"><b>"Lou Dobbs Tonight"</b></font> is moving to prime-time! Starting Monday, November 5th.</td></tr><tr><td>
+<img src=news2-1.jpg align=left width=80 height=60><font color="#FF9900"><b>India</b></font> were held up by a rearguard action from Pakistan's Misbah-ul-Haq after taking control on the opening afternoon of the first Test in Delhi.</td></tr></table>
+
+</div>
+<div id=news3 class=news_style rel="On this Veterans Day"><table><tr><td>				
+<img src=news3.jpg align=left width=125 height=70><i><b><font color="#FFFF99">On this Veterans Day,</font></b></i> we honor the men and women serving our country in uniform. please watch here.</td></tr><tr><td>
+<img src=news3-1.jpg align=left width=80 height=60>An annual report on<font color="#FF9900"><b> drug use</b></font> says around 4.5 million Europeans are likely to have used cocaine in the past year - a million more than in 2006.</td></tr></table>
+
+</div>
+<div id=news4 class=news_style rel="War on the Middle Class"><table><tr><td>				
+<img src=news4.gif align=left width=37 height=60><font color="#FF9900"><b>"War on the Middle Class"</b></font>
+"The government, big business, and special interest groups are enriching themselves at our expense.</td></tr><tr><td>
+<img src=news4-1.jpg align=left width=80 height=60><font color="#FF9900"><b>"In diplomacy, as you know, we don't get instant replies,"</b></font> said John Negroponte carefully, as he addressed the media before leaving Islamabad.</td></tr></table>
+</div>
+</div>
+
+
+
+
+<script src=/myapp/app.pl?r=jc&id=easynewsdemo1></script>
+</body>
+</html>

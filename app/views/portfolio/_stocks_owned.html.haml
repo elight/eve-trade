@@ -1,0 +1,29 @@
+#stocks_owned
+  - if @stock_shares.empty?
+    %h3
+      None
+  - else
+    %table.vader_table.tablesorter
+      %thead
+        %tr
+          %th.stock_column Stock
+          %th # owned
+          %th Max buy offer (ISK)
+          %th Min sell offer
+          %th Last trade time
+          %th Current market value
+      %tbody
+        - @stock_shares.each do |share|
+          %tr
+            %td.stock_column
+              = link_to share.symbol, :controller => :stocks, :action => :show, :id => share.stock.id
+            %td
+              = share.number
+            %td
+              = number_with_delimiter share.current_bid, :delimiter => ","
+            %td
+              = number_with_delimiter share.current_ask, :delimiter => ","
+            %td
+              = share.last_trade ? share.last_trade.created_at : nil
+            %td
+              = number_with_delimiter  share.market_value, :delimiter => ","

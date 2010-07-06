@@ -1,0 +1,16 @@
+- div = stock.current_dividend ? stock.current_dividend.amount : 0
+%br
+%p
+  %label
+    Current dividend:
+  %span{:id => "current_dividend#{stock.id}"}
+    #{div} 
+  ISK / share
+%br
+%p 
+  %button.ui-button.ui-state-default.ui-corner-all.operation.specify_dividend{:stock_id => stock.id}
+    Set dividend payment
+%p
+  %button.ui-button.ui-state-default.ui-corner-all.operation.disburse_dividend{:stock_id => stock.id}
+    Disburse dividend payment
+  %img.invisible{:style => "width: 50%; height: 50%", :src => "images/wait2.gif", :id => "disburse_wait#{stock.id}"}

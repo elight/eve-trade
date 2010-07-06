@@ -1,0 +1,28 @@
+#buy_orders
+  - if @buy_orders.empty?
+    %h3
+      None
+  - else
+    %table.vader_table.tablesorter
+      %thead
+        %tr
+          %th.stock_column Product
+          %th # Units
+          %th Max buy offer(ISK)
+          %th Expires
+      %tbody
+        - @buy_orders.each do |buy_order|
+          %tr{:id => "row#{buy_order.id}"}
+            %td.stock_column
+              = link_to buy_order.symbol, :controller => :stocks, :action => :show, :id => buy_order.stock.id
+            %td
+              = number_with_delimiter  buy_order.remaining_shares, :delimiter => ","
+            %td
+              = number_with_delimiter  buy_order.price_per_share, :delimiter => ","
+            %td
+              = buy_order.expires_at.strftime("%m/%d/%Y")
+            %td
+              %button.ui-button.ui-state-default.ui-corner-all.operation.cancel_buy_order{:order_id => buy_order.id}
+                Cancel
+
+

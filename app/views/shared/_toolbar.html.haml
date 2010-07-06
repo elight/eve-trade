@@ -1,0 +1,30 @@
+#toolbar
+  - if current_user
+    - form_tag '/search' do
+      %ul
+        %li
+          #{current_user.eve_character_name}
+        %li 
+          %a{:href => "/" :title => "Home page"}
+            %img{:src => "/images/home.gif", :alt =>"Home"}
+        %li 
+          %a{:href => "mailto:evan@triple-dog-dare.com", :title => "Contact us"}
+            %img{:src => "/images/contact.gif", :alt => "Contact"}
+        %li
+          stock search
+          = text_field_tag "search"
+        - if current_user.is_admin?
+          %li
+            =link_to "adminstration", admin_path
+        %li
+          =link_to "news", news_path
+        %li
+          =link_to "corporate management", corporate_management_path
+        %li
+          =link_to "sign off", logout_path
+  - else
+    %li 
+      %a{:href => "/" :title => "Home page"}
+        %img{:src => "/images/home.gif", :alt =>"Home"}
+    %li
+      =link_to "news", news_path

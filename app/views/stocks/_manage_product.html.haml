@@ -1,0 +1,29 @@
+%div{:id => stock.symbol}
+  .commands
+    %p
+      %button.ui-button.ui-state-default.ui-corner-all.operation.draft_article{:stock_id => stock.id}
+        Draft press release
+    %br
+    %p
+      - audit_request = current_user.audit_requests.find(:first, :conditions => ["stock_id = ?", stock.id], :order => "created_at DESC")
+      - if audit_request && audit_request.pending?
+        %span.emphasis
+          Your audit request made on #{audit_request.created_at} is currently pending
+      - else
+        - if audit_request && audit_request.complete?
+          %span.emphasis
+            Your last audit was completed on #{audit_request.updated_at}
+        - if current_user.balance >= Fee::AUDIT_FEE
+          %button.ui-button.ui-state-default.ui-corner-all.operation.request_audit{:stock_id => stock.id}
+            Request Audit
+        - else 
+          %span.emphasis
+            You lack the required 
+            = number_with_delimiter Fee::AUDIT_FEE, :delimiter => ","
+            ISK to request an audit
+      -
+    - if stock.is_a? Bond
+      = render :partial => "manage_bond", :locals => {:bond => stock}
+    - else 
+      = render :partial => "manage_stock", :locals => {:stock => stock}
+

@@ -1,0 +1,29 @@
+.frontpage {
+  float: right;
+  margin-top: -2px;
+}
+
+#submit_draft {
+  margin-top: -5px;
+}
+
+#article_body {
+  height: 200px;
+}
+
+#preview_area {
+  height: 200px;
+  border: 1px solid gray;
+}
+
+.red_inline {
+  border: 3px solid red;
+}
+
+.select_customer_to_refund {
+  margin-top: 30px;
+}
+
+#customers_to_refund {
+  color: black;
+}

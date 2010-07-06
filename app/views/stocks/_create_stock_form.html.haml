@@ -1,0 +1,23 @@
+#create_ipo_dialog.invisible{:title => "Create your IPO"}
+  - form_for :stock, :url => {:action => :add_stock} do |f|
+    .form_content65
+      %p
+        %label
+          Stock name:
+        = f.text_field :name, :class => "form_data"
+      %p
+        %label
+          Stock ticker:
+        = f.text_field :symbol, :class => "form_data"
+      %p
+        %label
+          Number of shares:
+        = f.text_field :number_of_shares, :class => "form_data"
+      %p
+        %label
+          Price per share (ISK):
+        = f.text_field :initial_price, :class => "form_data"
+  %br
+  %button#create_ipo_button.ui-button.ui-state-default.ui-corner-all.operation
+    Create IPO
+

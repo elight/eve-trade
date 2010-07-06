@@ -1,0 +1,2 @@
+class BondRepayment < DividendPayment
+end

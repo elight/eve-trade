@@ -1,0 +1,8 @@
+%h2
+  Search results
+= render :partial => 'shared/toolbar'
+
+%ol
+  - @stocks.each do |stock|
+    %li
+      = link_to "#{stock.name} (#{stock.symbol})", :action => :show, :id => stock.id

@@ -1,0 +1,10 @@
+development:
+  morphology: stem_en
+test:
+  morphology: stem_en
+cucumber:
+  morphology: stem_en
+  bin_path: /usr/local/bin
+production:
+  morphology: stem_en
+

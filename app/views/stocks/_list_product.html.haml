@@ -1,0 +1,20 @@
+#list_product
+  .commands
+    %p
+      At this time, EVE-Trade currently supports "virtual" shares that exist only within EVE-Trade.  In-game
+      shares will be supported in a later release
+    %br
+
+    - if current_user.balance < Fee::INITIAL_SELL_ORDER_FEE
+      %p.emphasis
+        You lack the required 
+        = number_with_delimiter Fee::INITIAL_SELL_ORDER_FEE, :delimiter => ","
+        ISK to create a product
+    - else
+      %p
+        %button.ui-button.ui-state-default.ui-corner-all.operation#create_ipo
+          Create an IPO
+      %br
+      %p
+        %button.ui-button.ui-state-default.ui-corner-all.operation#create_bond
+          Create a bond

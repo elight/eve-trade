@@ -1,0 +1,23 @@
+#bonds_owned
+  - if @bond_shares.empty?
+    %h3
+      None
+  - else
+    %table.vader_table.tablesorter
+      %thead
+        %tr
+          %th.stock_column Bond
+          %th # owned
+          %th Matures on
+          %th Market value (ISK)
+      %tbody
+        - @bond_shares.each do |share|
+          %tr
+            %td.stock_column
+              = link_to share.symbol, :controller => :stocks, :action => :show, :id => share.stock.id
+            %td
+              = number_with_delimiter  share.number, :delimiter => ","
+            %td
+              = share.matures_on
+            %td
+              = number_with_delimiter  share.market_value, :delimiter => ","

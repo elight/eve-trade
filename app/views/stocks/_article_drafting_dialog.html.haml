@@ -1,0 +1,37 @@
+#article_drafting_dialog.invisible{:title => "Draft press release"}
+  .info
+    %p
+      This dialog allows you to draft a press release about your product.  Press releases
+      may be removed by EVE-Trade administration if they are not deemed to provide any 
+      business value.
+    %p
+      There is an optional flat fee of 25M ISK for a press release to become featured.
+  - form_for :article, :url => {:controller => :articles, :action => :create} do |f|
+    = f.hidden_field :stock_id
+    %p.frontpage
+      = f.check_box :frontpage
+      %label.emphasis
+        Consent to fee of 25M for your press release to be featured
+    %p 
+      %label
+        Headline
+    %p
+      = f.text_field :headline, :style => "width: 100%;"
+    %p
+      %label
+        Body (uses the
+        %a{:href=>"http://daringfireball.net/projects/markdown/syntax"}
+          Markdown
+        syntax)
+    %p
+      = f.text_area :body, :style => "width: 100%;", :id => "article_body"
+    #preview_area.invisible
+  %p
+    %button#preview_article.ui-button.ui-state-default.ui-corner-all.operation
+      Preview article
+    = submit_tag "Submit draft article", :class => "ui-button ui-state-default ui-corner-all operation", :id => "submit_draft"
+
+#article_preview_dialog.invisible{:title => "Previewing draft article"}
+  #preview
+  %button#close_preview.ui-button.ui-state-default.ui-corner-all.operation{:style => "float: right;"}
+    Close

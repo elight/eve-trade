@@ -1,0 +1,25 @@
+#buy_dialog.invisible{:title => "Place buy order for #{@stock.symbol}"}
+  - form_for :buy_order, :url => {:controller => :stocks, :action => :place_buy_order } do |f|
+    #form_div.form_content
+      - share_or_bond = @stock.is_a?(Bond) ? "bond" : "share"
+      %p
+        %label
+          = "# #{share_or_bond}s of #{@stock.symbol}:"
+        = f.text_field :total_shares, :size => 15, :value => 1
+        %span.input_preview
+      %p
+        %label
+          Price per #{share_or_bond} (ISK):
+        - price = @ask ? @ask : @stock.initial_price
+        = f.text_field :price_per_share, :size => 15, :value => price
+        %span.input_preview
+      %p
+        %label 
+          Expiring at:
+        = f.text_field :expires_at, :size => 15, :value => @buy_order.expires_at.strftime("%m/%d/%Y")
+
+      = hidden_field_tag "buy_order[stock_id]", @stock.id
+  %button#complete_buy_order.ui-button.ui-state-default.ui-corner-all.operation
+    Complete order
+
+

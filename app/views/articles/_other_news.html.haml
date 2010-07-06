@@ -1,0 +1,7 @@
+#other_news
+  %h4
+    Other news
+  %ul
+    - @non_featured.each do |a|
+      %li
+        = link_to a.headline, :action => "show", :id => a.id

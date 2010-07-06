@@ -1,0 +1,97 @@
+#transactions
+  - if @transactions.empty?
+    %h3
+      None
+  - else
+    %table.vader_table.tablesorter
+      %thead
+        %tr
+          %th Date
+          %th Action
+          %th ISK
+          %th Per unit ISK
+      %tbody
+        - @transactions.each do |transaction|
+          %tr
+            %td
+              - if transaction.occurred_at
+                = transaction.occurred_at
+              - elsif transaction.updated_at
+                = transaction.updated_at
+              - else
+                = transaction.created_at
+            %td
+              - case transaction.type
+              - when "Deposit"
+                = transaction.type
+              - when "Withdrawal" 
+                - if transaction.state == "complete"
+                  = "Withdrawal completed; you were paid by teller"
+                -else 
+                  = "Withdrawal pending"
+              - when "Purchase"
+                = current_user.id == transaction.payee.id ? "Sold" : "Bought"
+                = " #{transaction.number_of_shares} shares of "
+                = link_to transaction.stock.symbol, :controller => :stocks, :action => :show, :id => transaction.stock.id
+              - when "BondRefund"
+                - if current_user == transaction.payer
+                  = "Bond refund to #{transaction.payee.eve_character_name} for "
+                  = link_to transaction.stock.symbol, :controller => :stocks, :action => :show, :id => transaction.stock.id
+                - else 
+                  = "Bond refund from #{transaction.payer.eve_character_name} for "
+                  = link_to transaction.stock.symbol, :controller => :stocks, :action => :show, :id => transaction.stock.id
+              - when "BondRepayment"
+                - if current_user == transaction.payer
+                  = "Bond repayment to #{transaction.payee.eve_character_name} for "
+                  = link_to transaction.stock.symbol, :controller => :stocks, :action => :show, :id => transaction.stock.id
+                - else 
+                  = "Bond repayment from #{transaction.payer.eve_character_name} for "
+                  = link_to transaction.stock.symbol, :controller => :stocks, :action => :show, :id => transaction.stock.id
+              - when "DividendPayment"
+                - if current_user == transaction.payer
+                  = "Dividend payment to #{transaction.payee.eve_character_name} for "
+                  = link_to transaction.stock.symbol, :controller => :stocks, :action => :show, :id => transaction.stock.id
+                - else 
+                  = "Dividend payment from #{transaction.payer.eve_character_name} for "
+                  = link_to transaction.stock.symbol, :controller => :stocks, :action => :show, :id => transaction.stock.id
+              - when "OrderFee"
+                Order transaction fee
+              - when "ArticleFee"
+                Featured article fee
+              - when "FeePayout"
+                = "Fee payout on transaction of #{number_with_delimiter transaction.parent.amount, :delimiter => ','} ISK"
+              - when "FailedBondRepayment"
+                - if transaction.payer.id == current_user.id
+                  = "Overdue bond repayment to #{transaction.payee.eve_character_name} for "
+                - else
+                  = "Overdue bond repayment from #{transaction.payer.eve_character_name} for "
+                = link_to transaction.stock.symbol, :controller => :stocks, :action => :show, :id => transaction.stock.id
+              - when "FailedInterestPayment"
+                - if transaction.payer.id == current_user.id
+                  = "Overdue bond interest payment to #{transaction.payee.eve_character_name} for "
+                - else
+                  = "Overdue bond interest payment from #{transaction.payer.eve_character_name} for "
+                = link_to transaction.stock.symbol, :controller => :stocks, :action => :show, :id => transaction.stock.id
+              - when "AuditRequest"
+                Request for audit of 
+                = link_to transaction.stock.symbol, :controller => :stocks, :action => :show, :id => transaction.stock.id
+                on
+                = transaction.created_at
+              - else
+                = transaction.type
+            - klass = nil
+            - if transaction.is_a?(Deposit) || transaction.is_a?(FeePayout) || (["Purchase", "DividendPayment", "BondRepayment", "BondRefund"].include?(transaction.type) && transaction.payee_id == current_user.id)
+              - klass = "gain"
+              %td.gain
+                = number_with_delimiter transaction.amount, :delimiter => ","
+            - elsif transaction.is_a? FailedPayment
+              %td
+                = number_with_delimiter transaction.amount, :delimiter => ","
+            - else
+              %td.loss
+                = number_with_delimiter transaction.amount, :delimiter => ","
+            %td
+              -if transaction.is_a?(Purchase) || transaction.is_a?(DividendPayment)
+                = number_with_delimiter  transaction.price_per_share.to_i, :delimiter => ","
+              -else
+                0

@@ -1,0 +1,76 @@
+= javascript_include_tag "list_on_exchange.js"
+
+#internal_stock_explanation.invisible{:title => "EVE-Trade Fully Managed Stocks (Recommended)"}
+  %p
+    EVE-Trade Fully Managed Stocks simplify your life and improve your business.
+  %br
+  %p
+    With EVE-Online's in-game shares, you have to use EVE-Online to distribute and manage your corporation's shares.  
+    That is a lot of work!  EVE-Trade Fully Managed Stocks puts the power of EVE-Trade to work for you! 
+
+    %span.emphasis EVE-Trade Fully Managed Stocks
+    provides your shareholders with transparency.  Your shareholders will always know how much and how often your shares
+    are selling and at no extra effort to you.  To a shareholder, more information means less risk which means peace of mind for them.  
+    That peace of mind means 
+    %span.emphasis more investment capital for your corporation!
+  %br
+  %p
+    EVE-Trade Fully Managed Stocks
+    %span.emphasis reliably
+    and 
+    %span.emphasis instantly
+    tells you and your share holders:
+  %p
+    &nbsp;&nbsp;The current value of your corporation's shares to the minute
+  %p
+    &nbsp;&nbsp;Trading volume for the day
+  %p
+    &nbsp;&nbsp;Graphic historical views of past performance
+  %br
+  %p
+    Shares only trade hands within EVE-Trade, making the system 
+    %span.emphasis consistent 
+    and 
+    %span.emphasis safe 
+    for you and your shareholders
+  %br
+  %p
+    EVE-Trade Fully Managed Stocks are the most reliable and effective way to hold your IPO in EVE.  Sign up now!
+
+#internal_stock_dialog.invisible{:Title => "Create your EVE-Trade Fully Managed Stock"}
+  = render :partial => "create_stock_form", :locals => {:stock_type => "InternalStock"}
+
+#external_stock_explanation.invisible{:Title => "EVE-Online EVE-Trade Managed Stocks"}
+  %p
+    EVE-Online EVE-Trade Managed Stocks provide a significant improvement over plain EVE-Online corporation shares.
+  %p
+    With EVE-Online's in-game shares, you have to use EVE-Online to distribute and manage your corporation's shares.  
+    That is a lot of work!  
+    With EVE-Online corporate shares, you have to use EVE-Online to distribute and manage your corporation's shares.  
+    %span.emphasis EVE-Online EVE-Trade Managed Stocks
+    lets you build upon your publicly traded EVE-Online corporate shares by storing them safely and reliably 
+    within our EVE-Trade Escrow System.  Shares can then be purchased through EVE-Trade with escrowed funds.
+    The shares themselves only leave EVE-Trade when one of our trustworthy tellers completes the transaction
+    by sending the shares onward to the purchaser.
+  %p
+    If you already have an EVE-Online share-based corporation, then EVE-Online EVE-Trade Managed Stock is the 
+    best way for you to publicly trade your corporation's shares.
+
+#external_stock_dialog.invisible{:Title => "Create your EVE-Online EVE-Trade Managed Stock"}
+  = render :partial => "create_stock_form", :locals => {:stock_type => "ExternalStock"}
+
+%h2
+  List an IPO on EVE-Trade
+%p
+  Select a type of stock:
+  %ul
+    %li
+      %a{:href=>"#", :id=>"internal_stock"}
+        EVE-Trade Fully Managed Stock (Recommended)
+      %span#dialog_internal_whatisthis.ui-button.ui-state-default.ui-corner-all.operation
+        What is this? 
+    %li
+      %a{:href=>"#", :id=>"external_stock"}
+        EVE-Online EVE-Trade Managed Stock
+      %span#dialog_external_whatisthis.ui-button.ui-state-default.ui-corner-all.operation
+        What is this?

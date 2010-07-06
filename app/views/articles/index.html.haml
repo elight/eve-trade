@@ -1,0 +1,11 @@
+= stylesheet_link_tag "news.css"
+
+#headlines
+  #news_banner
+    %h1
+      = "EVE Market Watch"
+    %span.updated_at
+      last updated at
+      = Article.last.updated_at
+  = render :partial => "other_news"
+  = render :partial => "featured"

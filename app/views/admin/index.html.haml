@@ -1,0 +1,76 @@
+= javascript_include_tag "jquery.tablesorter.min.js"
+= javascript_include_tag "admin.js"
+= stylesheet_link_tag "blue_tablesorter.css"
+
+%h1
+  Administration
+  
+#tabs
+  %ul
+    %li
+      %a{:href => "#pending_transactions"}
+        Pending withdrawals
+        %span#number_pending_transactions
+          = "(#{@pending_transactions.size})"
+        
+    %li
+      %a{:href => "#pending_news"}
+        Articles awaiting approval
+        %span#number_pending_transactions
+          = "(#{@pending_articles.size})"
+  #pending_transactions
+    - if @pending_transactions.empty?
+      %h3
+        None
+    - else
+      %table.vader_table.tablesorter
+        %thead
+          %tr
+            %th Date
+            %th Login
+            %th Character Name
+            %th Reason
+            %th Amount (ISK)
+        %tbody
+          - @pending_transactions.each do |pending_transaction|
+            %tr{:id => "transaction#{pending_transaction.id}"}
+              %td
+                = pending_transaction.created_at
+              %td
+                = pending_transaction.payee.login
+              %td
+                = pending_transaction.payee.eve_character_name
+              %td
+                = pending_transaction.type
+              %td
+                = pending_transaction.amount
+              %td
+                %button.handle_transaction.ui-button.ui-state-default.ui-corner-all.operation{:value => pending_transaction.id}
+                  Fulfill transaction
+                %button.delete_transaction.ui-button.ui-state-default.ui-corner-all.operation{:value => pending_transaction.id}
+                  Delete
+  #pending_news
+    - if @pending_articles.empty?
+      %h3
+        None
+    - else
+      %table.vader_table.tablesorter
+        %thead
+          %tr
+            %th Date
+            %th Character Name
+            %th Headline
+        %tbody
+          - @pending_articles.each do |pending_article|
+            %tr{:id => "article#{pending_article.id}"}
+              %td
+                = pending_article.created_at
+              %td
+                = pending_article.user.eve_character_name
+              %td
+                = link_to pending_article.headline, :controller => "articles", :action => "show", :id => pending_article.id
+              %td
+                %button.handle_article.ui-button.ui-state-default.ui-corner-all.operation{:article_id=> pending_article.id, :action => "feature"}
+                  Feature article
+                %button.handle_article.ui-button.ui-state-default.ui-corner-all.operation{:article_id => pending_article.id, :action => "deny"}
+                  Deny article

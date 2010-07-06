@@ -1,0 +1,80 @@
+#create_bond_dialog.invisible{:title => "Create your Bond"}
+  - form_for :bond, :url => {:action => :add_bond} do |f|
+    %p.emphasis
+      * = Required field
+    .form_content80
+      %p
+        %label
+          %span.emphasis
+            *
+          Bond name:
+        = f.text_field :name, :class => "form_data"
+      %p
+        %label
+          %span.emphasis
+            *
+          Bond symbol:
+        = f.text_field :symbol, :class => "form_data"
+      %p
+        %label
+          %span.emphasis
+            *
+          Number of bonds:
+        = f.text_field :number_of_shares, :class => "form_data"
+      %p
+        %label
+          %span.emphasis
+            *
+          Price per bond:
+        = f.text_field :initial_price, :class => "form_data"
+      %p
+        %label
+          %span.emphasis
+            *
+          Monthly interest rate (%):
+        = f.text_field :initial_interest_rate, :class => "form_data"
+      %p
+        %select#bond_months_until_maturity{:name => "bond[months_until_maturity]", :style => "float:right;"}
+          %option{:selected => "selected"}
+          - Array(1..36).each do |i|
+            %option
+              = i
+        %label
+          %span.emphasis
+            *
+          Months until maturity:
+      %p
+        %label
+          Refundable prior to maturation?
+        = f.check_box :refundable_early, :class => "form_data"
+      %p.ui-button.ui-state-default.ui-corner-all.operation#increment_rate{:style => "text-align:center;"}
+        %label
+          + Increment interest rate every X months (OPTIONAL)
+      #increment_rate_div.invisible
+        %p
+          %span{:style => "float:right;"}
+            %select#bond_period_length{:name => "bond[period_length]"}
+          %label
+            Period length (months): 
+        %p
+          %label
+            Increment size (%):
+          %input{:type=>"text", :name => "bond[interest_increment]", :id => "bond_interest_increment", :size => 30}
+      %p.ui-button.ui-state-default.ui-corner-all.operation#rate_bonus{:style => "text-align:center;"}
+        %label
+          + Bonus interest rate of X% at period Y (OPTIONAL)
+      #bonus_rate_div.invisible
+        %p
+          %span{:style => "float:right;"}
+            %select#bond_bonus_rate_period{:name => "bond[bonus_rate_period]"}
+          %label
+            Apply on period:
+        %p
+          %label
+            Bonus interest rate (%):
+          %input{:type=>"text", :name => "bond[bonus_rate]", :id => "bond_interest_bonus", :size => 30}
+  %br
+  %button#create_bond_button.ui-button.ui-state-default.ui-corner-all.operation
+    Create Bond
+
+

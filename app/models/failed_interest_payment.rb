@@ -1,0 +1,2 @@
+class FailedInterestPayment < FailedPayment
+end

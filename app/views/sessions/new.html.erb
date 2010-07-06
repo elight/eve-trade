@@ -1,0 +1,81 @@
+<% form_tag session_path do -%>
+
+<div id="prec">
+  <div id="wrap">
+
+    <div style="width:80%; margin-left:10%; margin-right: 10%; margin-top: 20px; text-align: center">
+      <h2>
+        Thank you for your interest in EVE-Trade.  At this time, we are still in our closed beta phase.  However, we anticipate opening to the public shortly. 
+      </h2>
+    </div>
+
+    <div id="pic">
+      <div id="slogan">
+        <h1>A universe of profit awaits!</h1>
+        <h2>
+          <p>
+            <span class="emphasis">EVE-Trade</span> secures and simplifies the trading of public corporation shares in <a href="http://eve-online.com">EVE-Online</a>.  CEOs use
+            EVE-Trade to enable the automated public trading of their corporation.
+            Purveyors of EVE public stocks can locate, analyze, compare, acquire, and sell 
+            EVE public corporation stocks.
+          </p>
+          <p>
+            EVE-Trade works for you to provide accurate valuations of corporate offerings.  We even have our
+            own staff of experienced and talented auditors working on your behalf everyday!
+          </p>
+          <br/>
+          <p>
+            <span class="emphasis">We make it easy for you to make the right decisions!</span>
+          </p>
+        </h2>
+      </div>
+    </div>
+
+    <div id="menu">
+      <p><%= label_tag 'login' %><br />
+      <%= text_field_tag 'login', @login %></p>
+
+      <p><%= label_tag 'password' %><br/>
+      <%= password_field_tag 'password', nil %></p>
+
+      <p><%= label_tag 'remember_me', 'Remember me' %>
+      <%= check_box_tag 'remember_me', '1', @remember_me %></p>
+
+      <p/>
+      <p><%= submit_tag 'Log in' %></p>
+
+      <p>
+        <%= link_to 'Sign up for an account', signup_path %>
+      </p>
+      <p>
+        <%= link_to 'Forgot my password', forgotten_password_path %>
+      </p>
+      <% end -%>
+    </div>
+
+    <div style="width:80%; margin-left:10%; margin-right: 10%; margin-top: 20px; text-align: center">
+      <h2>
+        EVE-Trade works best when used with these browsers:
+      </h2>
+      <a href="http://www.mozilla.com/en-US/firefox/personal.html">
+        <img src="/images/200x32_all_blue.png">
+        </img>
+      </a>
+      <a href="http://apple.com/safari">
+        <img src="/images/safari-logo.jpg" style="width: 50px; height:50px; margin-bottom:3px;">
+        </img>
+      </a>
+    </div>
+
+
+    <!--
+    <div class="bottom-middle">
+      <label>New users</label>: To create your account, send "EvETrade Teller" a small sum of ISK.  <span class="emphasis">Your character's name and that amount will be your temporary login and password.</span>
+    </div>
+    //-->
+
+  </div>
+</div>
+  
+
+

@@ -1,0 +1,26 @@
+#featured
+  - first = @featured.first
+  -if @featured.size > 1
+    - rest = @featured[1...@featured.length]
+  - if first
+    #first_feature
+      %h3
+        = link_to first.headline, :action => "show", :id => first.id
+      %h4
+        = first.created_at
+      %h4
+        by
+        = "#{first.user.eve_character_name}, #{first.stock.name} (#{first.stock.symbol})"
+      %p
+        = BlueCloth.new(first.body_with_ellipsis_at 600).to_html
+  -if @featured.size > 1
+    #other_features
+      %h2
+        Features
+      %ul
+        - rest.each do |a|
+          %li
+            = link_to a.headline, :action => "show", :id => a.id
+            %span.feature_author
+              by 
+              = "#{a.user.eve_character_name}, #{a.stock.name} (#{a.stock.symbol})"

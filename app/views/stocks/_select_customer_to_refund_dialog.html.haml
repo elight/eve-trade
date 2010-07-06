@@ -1,0 +1,13 @@
+- @stock.shares.each_with_index do |share, i|
+  - next if share.user.id == @stock.ceo.id
+  %tr
+    %td 
+      = share.user.eve_character_name
+    %td
+      = share.market_value
+    %td
+      = share.matures_on
+    %td
+      %input{:type => "checkbox", :name => "share_#{i}", :value => share.id }
+
+

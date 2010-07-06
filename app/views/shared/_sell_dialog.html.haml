@@ -1,0 +1,20 @@
+#sell_dialog.invisible{:title => "Place sell order for #{@stock.symbol}"}
+  - form_for :sell_order, :url => {:controller => :stocks, :action => :place_sell_order } do |f|
+    #form_div.form_content
+      %p
+        %label
+          = "# shares of #{@stock.symbol}:"
+        = f.text_field :total_shares, :size => 15, :value => 1
+      %p
+        %label
+          Price per share (ISK):
+        - price = @bid ? @bid : @stock.initial_price
+        = f.text_field :price_per_share, :size => 15, :value => price
+      %p
+        %label 
+          Expriring at:
+        = f.text_field :expires_at, :size => 15, :value => @buy_order.expires_at.strftime("%m/%d/%Y")
+
+      = hidden_field_tag "sell_order[stock_id]", @stock.id
+  %button#complete_sell_order.ui-button.ui-state-default.ui-corner-all.operation
+    Complete order

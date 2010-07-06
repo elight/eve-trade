@@ -1,0 +1,166 @@
+= stylesheet_link_tag "show_stock.css"
+%script{:language => "javascript", :type => "text/javascript"}
+  - if @trades.size > 0
+    = "var y_axis_max = #{@max_trade.amount}"
+    var d =  { label: "ISK per share", data:[
+    - @trades.each do |trade|
+      = "[#{trade.created_at.to_i * 1000}, #{trade.price_per_share}],"
+    ]};
+= javascript_include_tag "show_stock.js"
+= '<!--[if IE]>'
+= javascript_include_tag "excanvas.min.js"
+= '<![endif]-->'
+= javascript_include_tag "jquery.flot.js"
+
+= render :partial => "shared/buy_dialog", :locals => {:buy_order => @buy_order, :ask => @ask}
+= render :partial => "shared/sell_dialog", :locals => {:sell_order => @sell_order, :bid => @bid}
+
+%h2
+  #{@stock.name} (#{@stock.symbol})
+
+- if !@stock.is_a?(Bond) && @trades.size > 0
+  #graphs{:style =>"width:100%"}
+    #placeholder{:style => "width:100%;height:200px;"}
+    %br
+    %h3 Drag either graph to drill down or up into the data
+    #overview{:style => "margin-top:20px;width:100%;height:50px"}
+
+#commands
+  %p
+  - if @stock.is_a?(Bond) && @stock.number_shares_for_sale == 0
+    %h3
+      None for sale
+  - if !@stock.shares.empty? || (@stock.is_a?(Bond) && @stock.number_shares_for_sale > 0)
+    %button#buy.ui-button.ui-state-default.ui-corner-all.header
+      Place Buy Order
+  - if !@stock.is_a?(Bond) && current_user.has_unallocated_shares_in?(@stock) || @stock.is_a?(Bond) && current_user.has_unallocated_shares_in?(@stock) && @stock.ceo.id == current_user.id
+    %button#sell.ui-button.ui-state-default.ui-corner-all.header
+      Place Sell Order
+
+= render :partial => "stock_news"
+
+#stats
+  - share_or_bond = @stock.is_a?(Bond) ? "bond" : "share"
+  - shares_or_bonds = share_or_bond + "s"
+  %p
+    %label
+      Product type:
+    %span.form_data
+      = @stock.is_a?(Bond) ? "Bond" : "Stock"
+  %p
+    %label
+      Managed by:
+    %span.form_data
+      = @stock.ceo.eve_character_name
+  - if @stock.is_a? Bond
+    %p
+      %label
+        Interest rate:
+      %span.form_data
+        = "#{@stock.initial_interest_rate}%"
+    %p
+      %label
+        Maturation time:
+      %span.form_data
+        = "#{@stock.months_until_maturity} months"
+    - if @stock.period_length
+      %p
+        %label
+          Interest increments:
+        %span.form_data
+          = "#{@stock.interest_increment}% every #{@stock.period_length} months"
+    - if @stock.bonus_rate_period
+      %p 
+        %label
+          Interest bonus:
+        %span.form_data
+          = "#{@stock.bonus_rate}% on month #{@stock.bonus_rate_period}"
+    %p
+      %label
+        Refundable early?:
+      %span.form_data
+        = @stock.refundable_early? ? "Yes" : "No"
+    %p
+      %label
+        Price per bond:
+      %span.form_data
+        = number_with_delimiter @stock.initial_price, :delimiter => ','
+        ISK / bond
+  - else 
+    %p
+      %label
+        Last traded at:
+      %span.form_data
+        = number_with_delimiter @last_trade_cost_per_share, :delimiter => ','
+        ISK / share
+    %p
+      %label
+        Last trade time:
+      %span.form_data
+        = @last_trade_time
+
+    %p
+      %label
+        Highest Buy Offer:
+      %span.form_data
+        = number_with_delimiter @bid, :delimiter => ','
+        ISK / share
+    %p
+      %label
+        Lowest Sell Offer:
+      %span.form_data
+        = number_with_delimiter @ask, :delimiter => ','
+        ISK / share
+    %p
+      %label
+        Dividend:
+      %span.form_data
+        - if @stock.current_dividend
+          = number_with_delimiter @stock.current_dividend.amount, :delimiter => ','
+          ISK / share
+        - else
+          N/A
+    %p
+      %label
+        Divided last changed on:
+      %span.form_data
+        - if @stock.current_dividend
+          = @stock.current_dividend.created_at
+        - else
+          N/A
+    %p
+      %label
+        Day's Range:
+      %span.form_data
+        (
+        = number_with_delimiter @days_min, :delimiter => ','
+        = " ... "
+        = number_with_delimiter @days_max, :delimiter => ','
+        )
+    %p
+      %label
+        Volume:
+      %span.form_data
+        = @daily_volume
+        = shares_or_bonds
+    %p
+      %label
+        Avg Vol (3m):
+      %span.form_data
+        = sprintf("%.2f", @avg_volume)
+        = shares_or_bonds
+        = "/ day"
+
+  %p
+    %label
+      Total 
+      = shares_or_bonds + ":"
+    %span.form_data
+      = number_with_delimiter @stock.number_of_shares, :delimiter => ","
+      = shares_or_bonds
+  %p
+    %label
+      = "# #{shares_or_bonds} for sale:"
+    %span.form_data
+      = number_with_delimiter @stock.number_shares_for_sale, :delimiter => ","
+      = shares_or_bonds

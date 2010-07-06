@@ -1,0 +1,9 @@
+#withdraw_funds_div
+  %p
+    Withdrawal requests are regularly processed by our tellers.  Your withdrawal should be complete within 24 hours.
+  - form_for "withdrawal", :url => {:action => :funds_withdrawal} do |f|
+    %label 
+      Amount to withdraw:
+    = f.text_field :amount, :size => 12
+  %button#request_withdrawal.ui-button.ui-state-default.ui-corner-all.operation
+    Submit request 

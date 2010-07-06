@@ -1,0 +1,2 @@
+class ExternalStock < Stock
+end

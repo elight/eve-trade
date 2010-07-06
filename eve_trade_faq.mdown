@@ -1,0 +1,136 @@
+FAQ
+===
+
+About
+-----
+* <a href="#what">What is EVE-Trade?</a>
+* <a href="#services">What services does EVE-Trade offer?</a>
+* <a href="#make_money">How do I make money using EVE-Trade?</a>
+* <a href="#launch">When is EVE-Trade opening for business?</a>
+* <a href="#bank">EVE-Trade can hold my money.  Is EVE-Trade like a bank?</a>
+* <a href="#fees">Are there any fees for using EVE-Trade?</a>
+
+Stocks
+------
+* <a href="#virtual_stock">What is a virtual stock?</a>
+* <a href="#creating_stocks">Can anyone create an IPO?</a>
+* <a href="#assigning_dividends">Can my stock pay a divdend?</a>
+* <a href="#dividend_payments">How do you handle divdend payments?</a>
+* <a href="#press_releases">How can I keep my investors up to date on the status of their investment?</a>
+
+Bonds
+-----
+* <a href="#creating_bonds">Can anyone create a Bond?</a>
+* <a href="#interest_payments">How do you handle interest payments?</a>
+* <a href="#failed_interest_payment">What happens if the bond issuer doesn't have enough of a balance to make some/all of his interest payments?</a>
+* <a href="#bond_repayment">How do you handle bond repayment?</a>
+* <a href="#failed_bond_repayment">What happens if the bond issuer doesn't have enough of a balance to repay a mature bond?</a>
+* <a href="#press_releases">How can I keep my investors up to date on the status of their investment?</a>
+
+Audits
+------
+* <a href="#risk">How does EVE-Trade reduce investor risk?</a>
+* <a href="#certification">What does EVE-Trade Certified mean?</a>
+* <a href="#cost">How do I get my product EVE-Trade Certified?</a>
+
+News
+----
+* <a href="#eve_market_watch">What is EVE Market Watch?</a>
+* <a href="#where_is_all_of_the_news">Why doesn't EVE Market Watch display all of the news?</a>
+* <a href="#older_articles">Where can I find older articles not dislayed on EVE Market Watch?</a>
+* <a href="#rss">Do you offer an RSS feed?</a>
+
+Advertising
+-----------
+* <a href="#advertising_cost">EVE-Trade looks great! How do I get my banner ad to appear on EVE-Trade?</a>
+
+Technical
+---------
+* <a href="#hosting">What hosting does EVE-Trade use?</a>
+* <a href="#security">How do you keep my data secure?</a>
+
+
+
+*<a name="what">What is EVE-Trade?</a>*
+
+*<a name="services">What services does EVE-Trade offer?</a>*
+
+*<a name="make_money">How do I make money using EVE-Trade?</a>*
+
+*<a name="launch">When is EVE-Trade opening for business?</a>
+
+Really, *really* soon!
+
+*<a name="bank">EVE-Trade can hold my money.  Is EVE-Trade like a bank?</a>*
+
+*<a name="fees">Are there any fees for using EVE-Trade?</a>* 
+
+**New Stock (IPO) Fee:** 50M ISK when the stock is created.  There is **no fee** on the sell order that is created automatically at the time of the IPO.
+
+**New Bond Fee:** 50M ISK when the bond is created.  There is **no fee** on the sell order that is created automatically at the time the bond is created.
+
+**Buy Order Fee:** 1% of value of buy order when the buy order is submitted
+
+**Sell Order Fee:** 1% of value of sell order when the sell order is submitted
+
+**Featured Press Release Fee:** When submitting a press release for a stock/bond that you manage, for 25M ISK your press release will be featured on the portfolio page of every EVE-Trade user for no less than 1 week's time in a rotating fashion with other featured press releass.  Also, the latest featured press release receive the marquee location on <a href="https://eve-trade.net/news">EVE Market Watch</a>.
+
+*<a name="virtual_stock">What is a virtual stock?</a>*
+
+*<a name="creating_stocks">Can anyone create an IPO?</a>*
+
+*<a name="assigning_dividends">Can my stock pay a divdend?</a>*
+
+*<a name="dividend_payments">How do you handle divdend payments?</a>*
+
+Dividend payments are, literally, disbursed to shareholders at the click of a stock manager's button.  The individual dividend payments are deducted from the stock manager's EVE-Trade account and credited to the shareholders' respective EVE-Trade accounts.  Therefore, it is necessary for stock managers to ensure that they have adequate funds before attempting to make a dividend payment.
+
+*<a name="press_releases">How can I keep my investors up to date on the status of their investment?</a>*
+
+*<a name="creating_bonds">Can anyone create a Bond?</a>*
+
+*<a name="interest_payments">How do you handle interest payments?</a>*
+
+Automatically on a monthly basis.  Interest payments are deducted from the bond manager's EVE-Trade account and credited to the bond holder's EVE-Trade account.
+
+*<a name="failed_interest_payment">What happens if the bond issuer doesn't have enough of a balance to make some/all of his interest payments?</a>*
+
+We create a record of the failed interest payment in the EVE-Trade database.  A failed interest payment is logged in both the bond issuer and bond holder's transactions.  This is intended to motivate bond issuer's to prevent this from happening.  Later, these failed payments will show up on the bond's detail page so that future customers of this bond issuer will be aware of previous failures.
+
+*<a name="bond_repayment">How do you handle bond repayment?</a>*
+
+Automatically when the individual bonds reach maturity (that is, after the number of months specified on the bond by the bond issuer have elapsed).  The repayment is deducted from the bond manager's EVE-Trade account and credited to the bond holder's EVE-Trade account.  
+
+*<a name="failed_bond_repayment">What happens if the bond issuer doesn't have enough of a balance to repay a mature bond?</a>*
+
+We create a record of the failed bond repayment in the EVE-Trade database.  A failed interest payment is logged in both the bond issuer and bond holder's transactions.  This is intended to motivate bond issuer's to prevent this from happening.  Later, these failed payments will show up on the bond's detail page so that future customers of this bond issuer will be aware of previous failures.
+
+*<a name="press_releases">How can I keep my investors up to date on the status of their investment?</a>*
+
+*<a name="risk">How does EVE-Trade reduce investor risk?</a>*
+
+*<a name="certification">What does EVE-Trade Certified mean?</a>*
+
+*<a name="cost">How do I get my product EVE-Trade Certified?</a>*
+
+*<a name="eve_market_watch">What is EVE Market Watch?</a>*
+
+*<a name="where_is_all_of_the_news">Why doesn't EVE Market Watch display all of the news?</a>*
+
+There is only so much space on the page!  Besides, EVE Market Watch focuses on the latest news.
+
+*<a name="older_articles">Where can I find older articles not dislayed on EVE Market Watch?</a>*
+
+You can navigate to individual stocks and bonds to locate news relevant to them.  These pages may also include articles not listedon EVE Market Watch due to space constraints.
+
+*<a name="rss">Do you offer an RSS feed of EVE Market Watch?</a>*
+
+No but we intend to in the near future.
+
+*<a name="advertising_cost">EVE-Trade looks great! How do I get my banner ad to appear on EVE-Trade?</a>*
+
+*<a name="hosting">What hosting does EVE-Trade use?</a>*
+
+EVE-Trade is proudly hosted on Slicehost, an excellent provider of virtual private shared hosting.
+
+*<a name="security">How do you keep my data secure?</a>*

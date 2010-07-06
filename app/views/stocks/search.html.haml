@@ -1,0 +1,7 @@
+%h2
+  Search corporations for '#{@query}'
+#results
+  %ol
+    - @results.each do |stock|
+      %li
+        = link_to "#{stock.name} (#{stock.symbol})", :action => "show", :id => stock.id

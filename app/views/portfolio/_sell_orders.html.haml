@@ -1,0 +1,26 @@
+#sell_orders
+  - if @sell_orders.empty?
+    %h3
+      None
+  - else
+    %table.vader_table.tablesorter
+      %thead
+        %tr
+          %th.stock_column Product
+          %th # Units
+          %th Min sell offer
+          %th Expires
+      %tbody
+        - @sell_orders.each do |sell_order|
+          %tr{:id => "row#{sell_order.id}"}
+            %td.stock_column
+              = link_to sell_order.symbol, :controller => :stocks, :action => :show, :id => sell_order.stock.id
+            %td
+              = number_with_delimiter  sell_order.remaining_shares, :delimiter => ","
+            %td
+              = number_with_delimiter  sell_order.price_per_share, :delimiter => ","
+            %td
+              = sell_order.expires_at.strftime("%m/%d/%Y") if sell_order.expires_at
+            %td
+              %button.ui-button.ui-state-default.ui-corner-all.operation.cancel_sell_order{:order_id => sell_order.id}
+                Cancel

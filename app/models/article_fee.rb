@@ -1,0 +1,2 @@
+class ArticleFee < Fee
+end

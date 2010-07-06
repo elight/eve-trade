@@ -1,0 +1,42 @@
+#bond_market
+  - if Bond.count == 0
+    %h3
+      None
+  - else
+    %table.vader_table.tablesorter
+      %thead
+        %tr
+          %th.stock_column Product
+          %th # 4 Sale
+          %th Rate
+          %th Term
+          %th I Periods
+          %th I Rate
+          %th B Period
+          %th B Rate
+          %th Price (ISK)
+      %tbody
+        - Bond.all.each do |stock|
+          %tr
+            %td.stock_column
+              = link_to stock.symbol, :controller => :stocks, :action => :show, :id => stock.id
+            %td
+              - num_for_sale = stock.number_shares_for_sale 
+              = num_for_sale == 0 ? "None" : num_for_sale
+            %td 
+              = "#{stock.initial_interest_rate}%"
+            %td
+              = stock.months_until_maturity
+            %td
+              = stock.period_length
+            %td
+              - if stock.interest_increment
+                = "#{stock.interest_increment}%"
+            %td
+              - if stock.bonus_rate_period
+                = stock.bonus_rate_period
+            %td
+              - if stock.bonus_rate
+                = "#{stock.bonus_rate}%"
+            %td
+              = number_with_delimiter  stock.current_ask, :delimiter => ","

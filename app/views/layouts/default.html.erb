@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>EVE-Trade</title>
+    <%= stylesheet_link_tag "/javascripts/css/vader/jquery-ui-1.7.2.custom.css" %>
+    <%= stylesheet_link_tag "app_m1.css" %>
+    <%= javascript_include_tag "js/jquery-1.3.2.min.js" %>
+    <%= javascript_include_tag "js/jquery-ui-1.7.2.custom.min.js" %>
+    <%= javascript_include_tag "js/effects.core.js" %>
+    <%= javascript_include_tag "jquery.cycle.all.min.js" %>
+    <%= javascript_include_tag "app.js" %>
+  </head>
+  <body>
+    <div class="content">
+      <div id="top">
+          <img src="/images/logo.png" alt="EVE-Trade" class="logo"/>
+          <h2>A universe of profit awaits!</h2>
+      </div>
+    </div>
+    
+    <%= render :partial => 'shared/toolbar' %>
+
+    <div id="main" class="content">
+      <%= render :partial => 'shared/advertisements' %>
+      <div id="notice">
+        <%= flash[:notice] %>
+      </div>
+      <div id="error">
+        <% if flash[:error].is_a? String %>
+          <%= flash[:error] %>
+        <% elsif flash[:error] %>
+          <% flash[:error].each do |attr, msg| %>
+            <p>
+              <% if attr.to_s == "base" %>
+                <%= msg %>
+              <% else %>
+                <%= attr.to_s.titleize + " " + msg %>
+              <% end %>
+            </p>
+          <% end %>
+        <% end %>
+      </div>
+      <%= yield %>
+    </div>
+    <div id="footer">
+      <div class="right">
+        &copy; Copyright 2009, <a href="http://triple-dog-dare.com">Triple Dog Dare, LLC</a> - <a href="http://evan.tiggerpalace.com/feed/atom.xml">RSS Feed</a>, All rights reserved
+        <br />
+        EVE&#8482; and EVE&#8482;-Online are registered trademarks of <a href="http://www.ccpgames.com/">CCP</a>
+        <br/>
+        Initial stylesheet by <a href="http://www.free-css-templates.com">David Herreman</a>
+      </div>
+    </div>
+  </body>
+</html>
